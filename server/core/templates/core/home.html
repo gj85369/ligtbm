@@ -1,0 +1,182 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block header_add %}
+    <link rel='stylesheet' type='text/css' href={% static "core/css/home.css" %} xmlns="http://www.w3.org/1999/html"/>
+    <link rel='stylesheet' type='text/css' href={% static "core/css/spinner.css" %} />
+    <link rel='stylesheet' type='text/css' href={% static "core/css/apple-checkbox.css" %} />
+    <link rel='stylesheet' type='text/css' href={% static "core/css/drop-file.css" %} />
+{% endblock %}
+
+{% block content %}
+    <form class="form-jobs" enctype='multipart/form-data' action={% url "index" %} method='post'>
+    {% csrf_token %}
+        <h1 align="center">Docking</h1>
+        <br>
+
+        {# Job name #}
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="form-group {% if form.job_name.errors %}has-error has-feedback{% endif %}"
+                     style="text-align: center;">
+                    <label for="id_job_name" style="font-weight: normal;">{{ form.job_name.label }}</label>
+                    <input class="form-control center-text"
+                           style="height: 40px; margin:auto;"
+                           type="text" name="job_name" id="id_job_name" placeholder="1AVX_lig" maxlength="100"/>
+                    {% if form.job_name.errors %}
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    {% endif %}
+                    <p class="_help-text" align="center">{{ form.job_name.help_text }}</p>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-2">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.rec_pdb_file.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                        <label for="id_rec_pdb_file" style="font-weight: normal;">{{ form.rec_pdb_file.label }}</label>
+                        <div class="wrapper">
+                            <div class="file-upload" {% if form.rec_pdb_file.errors %}style="border-color: #a42727; color: darkred;"{% endif %}>
+                                <input type="file" name="rec_pdb_file" id="id_rec_pdb_file" required>
+                                <span class="glyphicon glyphicon-cloud-upload" style="font-size: 15px"></span>
+                                <p style="margin-top:auto; margin-bottom:auto;">&nbsp&nbspUpload PDB file</p>
+                                {% if form.rec_pdb_file.errors %}
+                                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <p class="_help-text" align="center">{{ form.rec_pdb_file.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div class="form-group {% if form.rec_chain.errors %}has-error has-feedback{% endif %}"
+                         style="text-align: center;">
+                            <label for="id_rec_chain" style="font-weight: normal;">{{ form.rec_chain.label }}</label>
+                            <input type="text"
+                                   class="form-control center-text"
+                                   style="margin:auto; height:40px;"
+                                   name="rec_chain" id="id_rec_chain" placeholder="A" maxlength="1" required>
+                            {% if form.rec_chain.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        <p class="_help-text" align="center">{{ form.rec_chain.help_text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="form-group {% if form.lig_smiles.errors %}has-error has-feedback{% endif %}"
+                     style="text-align: center;">
+                    <label for="id_lig_smiles" style="font-weight: normal;">{{ form.lig_smiles.label }}</label>
+                    <textarea class="form-control"
+                              rows="1"
+                              style="margin:auto"
+                              name="lig_smiles" id="id_lig_smiles"
+                              placeholder="C1C2C(C(S1)CCCCC(=O)O)NC(=O)N2" required></textarea>
+                    {% if form.lig_smiles.errors %}
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    {% endif %}
+                    <p class="_help-text" align="center">{{ form.lig_smiles.help_text }}</p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="form-group {% if form.pdb_exc.errors %}has-error has-feedback{% endif %}"
+                     style="margin:auto; text-align: center;">
+
+                    <label for="id_pdb_exc" style="font-weight: normal;">{{ form.pdb_exc.label }}</label>
+                    <textarea class="form-control"
+                              style="font-size: 14px;"
+                              rows="6"
+                              name="pdb_exc" id="id_pdb_exc" placeholder="1AO7,4CS4,4Q4W,.."></textarea>
+                    {% if form.pdb_exc.errors %}
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    {% endif %}
+                    <p class="_help-text" align="center">
+                        {{ form.pdb_exc.help_text }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-sm-5">
+                <div style="display: flex; height: 100px; justify-content: center; align-items: center">
+                    <div>
+                        <div class="form-group {% if form.modeller_key.errors %}has-error has-feedback{% endif %}" style="text-align: center;">
+                            <label style="font-weight: normal" for="id_modeller_key">{{ form.modeller_key.label }}</label>
+                            <textarea rows="1" class="form-control" style="font-size: 14px;"
+                                      name="modeller_key" id="id_modeller_key">{{ modeller_key }}</textarea>
+                            {% if form.modeller_key.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                        </div>
+                        {% autoescape off %}
+                            <p class="_help-text" align="center">{{ form.modeller_key.help_text }} </p>
+                        {% endautoescape %}
+                    </div>
+                 </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div style="display: flex; height: 100px; justify-content: center; align-items: center">
+                    <b style="border: 1px solid dimgrey; border-radius: 50px; padding: 10px; line-height: normal">OR</b>
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+                <div style="display: flex; height: 100px; justify-content: flex-start; align-items: center; padding-top:10px">
+                    <div>
+                        <div class="form-group {% if form.no_remodeling.errors %}has-error has-feedback{% endif %}"
+                             style="margin:auto; width:fit-content; width: -moz-fit-content">
+                            <input type="checkbox" id="id_no_remodeling" name="no_remodeling" class="ios8-switch ios8-switch-lg">
+                            {% if form.no_remodeling.errors %}
+                                <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                            {% endif %}
+                            <label for='id_no_remodeling' style="font-weight: normal; line-height: 20px;">{{ form.no_remodeling.label }}</label>
+                        </div>
+                        <p class="_help-text" align="center">{{ form.no_remodeling.help_text }}</p>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+        <hr>
+
+        {% if user.username == "anonym" %}
+            <div style="display: flex; justify-content: center">
+                <div class="form-group" style="margin: 0 auto; width: fit-content; width: -moz-fit-content">
+                    <input type="checkbox" id="id_noncommercial" class="ios8-switch ios8-switch-lg" required>
+                    <label for='id_noncommercial' style="font-weight: normal; line-height: 20px;">I will use LigTBM for non-commercial purposes only</label>
+                </div>
+            </div>
+        {% endif %}
+
+        {# Submit button #}
+        <div class="form-group jobs-submit text-center">
+            <button type="submit" class="btn btn-primary btn-md" id="submit_button" name="action" value="submit">Submit job</button>
+        </div>
+
+        <div id="spinner" style="display: none">
+            <p align="center">Processing input..</p>
+            <div class="spinner" style="margin: auto;"></div>
+        </div>
+    </form>
+
+{% endblock %}

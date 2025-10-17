@@ -1,0 +1,13 @@
+channels:
+  - openbabel
+  - rdkit
+  - schrodinger
+  - salilab
+dependencies:
+  - python>=3.7,<3.8
+  - click>=7.0,<7.1
+  - numpy>=1.15,<1.16
+  - openbabel>=2.4,<2.5
+  - rdkit>=2019.03,<2019.04
+  - pymol>=2.3,<2.4
+  - modeller>=9.24,<9.25  # Don't forget to adjust path in bootstrap.sh to properly remove dummy license key

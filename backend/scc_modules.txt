@@ -1,0 +1,9 @@
+# Basic stuff
+module load anaconda3/5.2.0
+module load blast+/2.7.1
+# For libmol2
+module load gcc/8.1.0
+module load cmake/3.14.5
+# For template search
+export BLASTDB=/projectnb/k3domics/ligtbm/blast/
+export LOCAL_PDB='/projectnb/k3domics/ligtbm/pdb-mmcif-gz/{mid}/{code}.cif.gz'

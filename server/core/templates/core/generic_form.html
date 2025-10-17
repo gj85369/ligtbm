@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h3 align="center">{{ page_title }}</h3>
+    <p align="center">{{ page_description }}</p>
+    <form class="my-generic-form" action={% url request.resolver_match.url_name %} method="post">
+        {% csrf_token %}
+        <div class="_generic_form">
+            {% for field in form %}
+
+                <div class="form-group {% if field.errors %}has-error has-feedback{% endif %}">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                    {% endif %}
+                </div>
+
+                {% if field.help_text %}
+                    <p class="_help-text" align="center">{{ field.help_text }}</p>
+                {% endif %}
+            {% endfor %}
+            <button type="submit" class="btn btn-primary btn-md" style="margin-top: 25px" value="submit">{{ submit_text }}</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="jumbotron" style="background-color: rgba(126,166,237,0.8)">
+	<h1 style="color: black">Welcome to {{ SERVER_NAME }}</h1>
+	<p style="color:black; font-weight: normal">Automated server for template-based small-molecule docking</p>
+    <a class="btn btn-md btn-link" style="white-space: normal; color: black;" href="{% url 'login' %}?anonym=true">
+        Use the server without the benefits of your own account &raquo;
+    </a>
+</div>
+
+<form class="form-horizontal my-signin-form" enctype="multipart/form-data" action={% url "login" %} method="post">
+    {% csrf_token %}
+
+	<h2 class="white-outline">Please sign in</h2>
+
+    <div class="form-group">
+        <input type="text" id="username" class="form-control" name="username"
+               value="" placeholder="E-mail" required autofocus>
+    </div>
+
+    <div class="form-group">
+        <input type="password" id="password" class="form-control" name="password"
+               value="" placeholder="Password" required>
+    </div>
+
+    <div class="form-group">
+        <a class="btn btn-sm btn-link white-outline" style="color: black;" href='{% url "reset_password" %}'>Forgot password?</a>
+    </div>
+
+     <div class="text-center">
+	    <button class="btn btn-md btn-success btn-block" type="submit" name="action" value="Login">Sign in</button>
+     </div>
+</form>
+
+{% endblock %}

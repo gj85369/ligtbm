@@ -1,0 +1,131 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: buildfiles/Dockerfile.web
+    image: web:latest
+    command: gunicorn server.wsgi:application --bind 0.0.0.0:8000 --reload --timeout 30
+    volumes:
+      - ./server:/code
+      - ${LOCAL_STORAGE}:/storage
+      - static_volume:/staticfiles
+      - media_volume:/mediafiles
+      - ./server/core/static/core:/staticfiles/core
+    environment:
+      - LOCAL_DB_HOST=db
+      - LOCAL_DB_NAME=server-template
+      - LOCAL_DB_USER=postgres
+      - LOCAL_ROOT=/code
+      - LOCAL_STORAGE=/storage
+      - REMOTE_HOST=${REMOTE_HOST}
+      - REMOTE_USER=${REMOTE_USER}
+      - REMOTE_PASS=${REMOTE_PASS}
+      - REMOTE_STORAGE=${REMOTE_STORAGE}
+      - REMOTE_BIN=${REMOTE_BIN}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - SECRET_KEY=${SECRET_KEY}
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
+      - PRODUCTION=${PRODUCTION}
+    expose:
+      - 8000
+    depends_on:
+      - db
+    links:
+      - db:db
+
+  db:
+    image: postgres:10.5-alpine
+    volumes:
+      - ${DATABASE_VOLUME}:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=server-template
+
+  nginx:
+    build:
+      context: buildfiles
+      dockerfile: Dockerfile.nginx
+    volumes:
+      - static_volume:/staticfiles
+      - media_volume:/mediafiles
+      - ./server/core/static/core:/staticfiles/core
+    ports:
+      - ${LOCAL_PORT}:80
+    depends_on:
+      - web
+      - flower
+
+  # runs on 5672 and 15672
+  rabbitmq:
+    image: rabbitmq:3.7-management-alpine
+    command: rabbitmq-server -h rabbit
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=sadovhw734of278r
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
+
+  celery:
+    image: web:latest
+    entrypoint: /bin/sh -c "mkdir -p /storage/logs && celery -A server worker --statedb=/storage/state.db -E -l warning --logfile=/dev/null"
+    volumes:
+      - ./server:/code
+      - ${LOCAL_STORAGE}:/storage
+    environment:
+      - LOCAL_DB_HOST=db
+      - LOCAL_DB_NAME=server-template
+      - LOCAL_DB_USER=postgres
+      - LOCAL_ROOT=/code
+      - LOCAL_STORAGE=/storage
+      - REMOTE_HOST=${REMOTE_HOST}
+      - REMOTE_USER=${REMOTE_USER}
+      - REMOTE_PASS=${REMOTE_PASS}
+      - REMOTE_STORAGE=${REMOTE_STORAGE}
+      - REMOTE_BIN=${REMOTE_BIN}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - SECRET_KEY=${SECRET_KEY}
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
+      - PRODUCTION=${PRODUCTION}
+    depends_on:
+      - web
+      - rabbitmq
+
+  flower:
+    image: web:latest
+    entrypoint: celery -A server flower --port=5555 --url_prefix=flower --persistent=True --db=/storage/flower.db
+    volumes:
+      - ./server:/code
+      - ./storage:/storage
+    environment:
+      - LOCAL_DB_HOST=db
+      - LOCAL_DB_NAME=server-template
+      - LOCAL_DB_USER=postgres
+      - LOCAL_ROOT=/code
+      - LOCAL_STORAGE=/storage
+      - REMOTE_HOST=${REMOTE_HOST}
+      - REMOTE_USER=${REMOTE_USER}
+      - REMOTE_PASS=${REMOTE_PASS}
+      - REMOTE_STORAGE=${REMOTE_STORAGE}
+      - REMOTE_BIN=${REMOTE_BIN}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - SECRET_KEY=${SECRET_KEY}
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
+      - PRODUCTION=${PRODUCTION}
+    depends_on:
+      - rabbitmq
+      - celery
+
+volumes:
+  static_volume:
+  media_volume:
+  postgres_data:
+

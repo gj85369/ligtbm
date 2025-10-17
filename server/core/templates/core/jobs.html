@@ -1,0 +1,107 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block header_add %}
+    <link rel='stylesheet' type='text/css' href={% static "core/css/progress-bar.css" %} />
+{% endblock %}
+
+{% block content %}
+    <h2 align="center">
+        {% if request.resolver_match.url_name == "results" %}
+            Results
+        {% elif request.resolver_match.url_name == "queue" %}
+            Queue
+        {% endif %}
+    </h2>
+    <br>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">  {# TODO: Fix the layout for small screens, in admin mode it doesn't fit #}
+            <table class="table table-hover table-bordered table-responsive" style="text-align: center; margin: auto">
+                <thead>
+                    <tr>
+                        <th style="text-align: center; padding: 0; justify-content: center;
+                                {% if order_by == '-job_id' %}
+                                    border-bottom-width: 3px; border-bottom-color: #51ad4c;
+                                {% endif %}">
+                            <a style="display: block; padding: 5px; color: black" href="{{ request.path }}?order_by=-job_id">Id</a>
+                        </th>
+                        <th style="text-align: center; padding: 0; justify-content: center;
+                                {% if order_by == 'job_name' %}
+                                    border-bottom-width: 3px; border-bottom-color: #51ad4c;
+                                {% endif %}">
+                            <a style="display: block; padding: 5px; color: black"href="{{ request.path }}?order_by=job_name">Name</a>
+                        </th>
+                        <th style="text-align: center; padding: 0; justify-content: center;
+                                {% if order_by == 'user__username' %}
+                                    border-bottom-width: 3px; border-bottom-color: #51ad4c;
+                                {% endif %}">
+                            <a style="display: block; padding: 5px; color: black" href="{{ request.path }}?order_by=user__username">User</a>
+                        </th>
+                        <th style="text-align: center; padding: 0; justify-content: center;
+                                {% if order_by == 'status' %}
+                                    border-bottom-width: 3px; border-bottom-color: #51ad4c;
+                                {% endif %}">
+                            <a style="display: block; padding: 5px; color: black" href="{{ request.path }}?order_by=status">Status</a>
+                        </th>
+                        {% if user.is_superuser %}
+                            <th style="text-align: center; padding: 0;">
+                                <div style="padding: 5px">Actions</div>
+                            </th>
+                        {% endif %}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for job in jobs %}
+                        <tr>
+                            <td><a href="{% url 'details' %}?job_id={{ job.job_id }}">{{ job.job_id }}</a></td>
+                            <td>{{ job.job_name|default:job.job_id|truncatechars:15 }}</td>
+                            <td>{{ job.user.username|truncatechars:20 }}</td>
+                            <td>
+                                {{ job.get_status_display }}{{ job.get_queue_status_display|yesno:": ,," }}{{ job.get_queue_status_display }}
+                                <div class="job-progress
+                                {% if job.status == "R.ERR" or job.status == "L.ERR" %}
+                                    job-progress-error
+                                {% elif job.status == "L.STR"%}
+                                    job-progress-start
+                                {% elif job.status == "R.RUN"%}
+                                    job-progress-running
+                                {% elif job.status == "L.CPL" or job.status == "L.FIN" %}
+                                    job-progress-complete
+                                {% elif job.status == "L.PDB" %}
+                                    job-progress-no-template
+                                {% endif %}"></div>
+                            </td>
+                            {% if user.is_superuser %}
+                                <td>
+                                    <a title="Restart job" href="{% url 'restart_job' %}?job_id={{ job.job_id }}" class="glyphicon glyphicon-repeat"></a>
+                                    <a title="Cancel job"  href="{% url 'cancel_job' %}?job_id={{ job.job_id }}" class="glyphicon glyphicon-remove"></a>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                <tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="my-fixed-width my-padded text-center">
+        <ul class="pagination pagination-sm">
+            <li {% if not jobs.has_previous %}class="disabled"{% endif %}>
+                <a href="?page=1">First</a>
+            </li>
+            <li {% if not jobs.has_previous %}class="disabled"{% endif %}>
+                <a href="?page={% if jobs.has_previous %}{{ jobs.previous_page_number }}{% else %}#{% endif %}">Previous</a>
+            </li>
+
+            <li class="active"><a href="#">{{ jobs.number }}</a></li>
+
+            <li {% if not jobs.has_next %}class="disabled"{% endif %}>
+                <a href="?page={% if jobs.has_next %}{{ jobs.next_page_number }}{% else %}#{% endif %}">Next</a>
+            </li>
+            <li {% if not jobs.has_next %}class="disabled"{% endif %}>
+                <a href="?page={{ jobs.paginator.num_pages }}">Last &raquo;</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

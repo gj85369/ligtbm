@@ -1,0 +1,143 @@
+{
+    "2QOP": [
+        {
+            "score": 1146.0,
+            "bits": null,
+            "expect": 6.49722e-162,
+            "num_alignments": null,
+            "identities": 215,
+            "positives": 215,
+            "gaps": 0,
+            "strand": [
+                null,
+                null
+            ],
+            "frame": [
+                0,
+                0
+            ],
+            "query": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATNE",
+            "query_start": 1,
+            "match": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATNE",
+            "sbjct": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATNE",
+            "sbjct_start": 1,
+            "align_length": 215,
+            "identity": 1.0,
+            "sbjct_length": 215,
+            "sbjct_pdb_id": "3BCG",
+            "sbjct_chain": "B"
+        }
+    ],
+    "3BCG": [
+        {
+            "score": 1146.0,
+            "bits": null,
+            "expect": 6.49722e-162,
+            "num_alignments": null,
+            "identities": 215,
+            "positives": 215,
+            "gaps": 0,
+            "strand": [
+                null,
+                null
+            ],
+            "frame": [
+                0,
+                0
+            ],
+            "query": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATNE",
+            "query_start": 1,
+            "match": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATNE",
+            "sbjct": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATNE",
+            "sbjct_start": 1,
+            "align_length": 215,
+            "identity": 1.0,
+            "sbjct_length": 215,
+            "sbjct_pdb_id": "3BCG",
+            "sbjct_chain": "B"
+        },
+        {
+            "score": 1146.0,
+            "bits": null,
+            "expect": 6.49722e-162,
+            "num_alignments": null,
+            "identities": 215,
+            "positives": 215,
+            "gaps": 0,
+            "strand": [
+                null,
+                null
+            ],
+            "frame": [
+                0,
+                0
+            ],
+            "query": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATNE",
+            "query_start": 1,
+            "match": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATNE",
+            "sbjct": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATNE",
+            "sbjct_start": 1,
+            "align_length": 215,
+            "identity": 1.0,
+            "sbjct_length": 215,
+            "sbjct_pdb_id": "3BCG",
+            "sbjct_chain": "B"
+        }
+    ],
+    "3LHQ": [
+        {
+            "score": 1014.0,
+            "bits": null,
+            "expect": 1.33736e-141,
+            "num_alignments": null,
+            "identities": 187,
+            "positives": 199,
+            "gaps": 0,
+            "strand": [
+                null,
+                null
+            ],
+            "frame": [
+                0,
+                0
+            ],
+            "query": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATN",
+            "query_start": 1,
+            "match": "MARKTKQ+A ETRQHILDVALRLFSQQGVS+TSL EIA AAGVTRGAIYWHFK+KSDLFSEIWELSESNIGELE+EYQAKFP DPLSVLREIL+H+LE+TVTEERRRLLMEIIFHKCEFVGEM VVQQAQR+LCLESYDRIEQTLKHCI AKMLP +L+TRRAAI+MR +ISGLMENWLFAPQSFDLKKEAR YV ILLEMY LCPTLR    N",
+            "sbjct": "MARKTKQQALETRQHILDVALRLFSQQGVSATSLAEIANAAGVTRGAIYWHFKNKSDLFSEIWELSESNIGELEIEYQAKFPDDPLSVLREILVHILEATVTEERRRLLMEIIFHKCEFVGEMVVVQQAQRSLCLESYDRIEQTLKHCINAKMLPENLLTRRAAILMRSFISGLMENWLFAPQSFDLKKEARAYVTILLEMYQLCPTLRASTVN",
+            "sbjct_start": 4,
+            "align_length": 214,
+            "identity": 0.8738317757009346,
+            "sbjct_length": 220,
+            "sbjct_pdb_id": "3LHQ",
+            "sbjct_chain": "B"
+        },
+        {
+            "score": 1014.0,
+            "bits": null,
+            "expect": 1.33736e-141,
+            "num_alignments": null,
+            "identities": 187,
+            "positives": 199,
+            "gaps": 0,
+            "strand": [
+                null,
+                null
+            ],
+            "frame": [
+                0,
+                0
+            ],
+            "query": "MARKTKQEAQETRQHILDVALRLFSQQGVSSTSLGEIAKAAGVTRGAIYWHFKDKSDLFSEIWELSESNIGELELEYQAKFPGDPLSVLREILIHVLESTVTEERRRLLMEIIFHKCEFVGEMAVVQQAQRNLCLESYDRIEQTLKHCIEAKMLPADLMTRRAAIIMRGYISGLMENWLFAPQSFDLKKEARDYVAILLEMYLLCPTLRNPATN",
+            "query_start": 1,
+            "match": "MARKTKQ+A ETRQHILDVALRLFSQQGVS+TSL EIA AAGVTRGAIYWHFK+KSDLFSEIWELSESNIGELE+EYQAKFP DPLSVLREIL+H+LE+TVTEERRRLLMEIIFHKCEFVGEM VVQQAQR+LCLESYDRIEQTLKHCI AKMLP +L+TRRAAI+MR +ISGLMENWLFAPQSFDLKKEAR YV ILLEMY LCPTLR    N",
+            "sbjct": "MARKTKQQALETRQHILDVALRLFSQQGVSATSLAEIANAAGVTRGAIYWHFKNKSDLFSEIWELSESNIGELEIEYQAKFPDDPLSVLREILVHILEATVTEERRRLLMEIIFHKCEFVGEMVVVQQAQRSLCLESYDRIEQTLKHCINAKMLPENLLTRRAAILMRSFISGLMENWLFAPQSFDLKKEARAYVTILLEMYQLCPTLRASTVN",
+            "sbjct_start": 4,
+            "align_length": 214,
+            "identity": 0.8738317757009346,
+            "sbjct_length": 220,
+            "sbjct_pdb_id": "3LHQ",
+            "sbjct_chain": "B"
+        }
+    ]
+}

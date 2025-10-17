@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<div class="jumbotron" style="background-color: rgba(70,123,209,0.27)">
+	<h1>Thank you for signing up</h1>
+    <p>Your password will arrive to the e-mail address <b>{{ email }}</b> shortly</p>
+    <br><br>
+    <a class="btn btn-md btn-primary" style="white-space: normal;" href={% url 'login' %} role="button">
+        You can log in now using your credentials
+    </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,753 @@
+{
+    "angles": [
+        {
+            "atom1": 1,
+            "atom2": 2,
+            "atom3": 3,
+            "spring_constant": 63.21,
+            "theta": 110.63
+        },
+        {
+            "atom1": 1,
+            "atom2": 2,
+            "atom3": 11,
+            "spring_constant": 67.72,
+            "theta": 109.43
+        },
+        {
+            "atom1": 2,
+            "atom2": 3,
+            "atom3": 4,
+            "spring_constant": 63.21,
+            "theta": 110.63
+        },
+        {
+            "atom1": 2,
+            "atom2": 3,
+            "atom3": 10,
+            "spring_constant": 67.72,
+            "theta": 109.43
+        },
+        {
+            "atom1": 2,
+            "atom2": 11,
+            "atom3": 15,
+            "spring_constant": 47.09,
+            "theta": 108.16
+        },
+        {
+            "atom1": 3,
+            "atom2": 2,
+            "atom3": 11,
+            "spring_constant": 67.72,
+            "theta": 109.43
+        },
+        {
+            "atom1": 3,
+            "atom2": 4,
+            "atom3": 5,
+            "spring_constant": 63.79,
+            "theta": 110.53
+        },
+        {
+            "atom1": 3,
+            "atom2": 4,
+            "atom3": 9,
+            "spring_constant": 67.72,
+            "theta": 109.43
+        },
+        {
+            "atom1": 3,
+            "atom2": 10,
+            "atom3": 14,
+            "spring_constant": 47.09,
+            "theta": 108.16
+        },
+        {
+            "atom1": 4,
+            "atom2": 3,
+            "atom3": 10,
+            "spring_constant": 67.72,
+            "theta": 109.43
+        },
+        {
+            "atom1": 4,
+            "atom2": 5,
+            "atom3": 6,
+            "spring_constant": 68.03,
+            "theta": 123.11
+        },
+        {
+            "atom1": 4,
+            "atom2": 5,
+            "atom3": 7,
+            "spring_constant": 62.82,
+            "theta": 116.05
+        },
+        {
+            "atom1": 4,
+            "atom2": 9,
+            "atom3": 13,
+            "spring_constant": 47.09,
+            "theta": 108.16
+        },
+        {
+            "atom1": 5,
+            "atom2": 4,
+            "atom3": 9,
+            "spring_constant": 68.65,
+            "theta": 108.7
+        },
+        {
+            "atom1": 5,
+            "atom2": 7,
+            "atom3": 8,
+            "spring_constant": 68.65,
+            "theta": 108.7
+        },
+        {
+            "atom1": 6,
+            "atom2": 5,
+            "atom3": 7,
+            "spring_constant": 68.03,
+            "theta": 123.11
+        },
+        {
+            "atom1": 7,
+            "atom2": 8,
+            "atom3": 12,
+            "spring_constant": 47.09,
+            "theta": 108.16
+        }
+    ],
+    "atoms": [
+        {
+            "ace_volume": 40.947,
+            "acp_type": -1,
+            "charge": 0.019001,
+            "element": "C",
+            "eps": -0.1811,
+            "eps03": -0.1,
+            "ftype_index": 1,
+            "ftype_name": "CH3E",
+            "name": "C1",
+            "radius": 2.165,
+            "radius03": 1.76,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "C.3",
+            "x": -13.232,
+            "y": -2.004,
+            "z": 12.874
+        },
+        {
+            "ace_volume": 12.257,
+            "acp_type": -1,
+            "charge": 0.2018,
+            "element": "C",
+            "eps": -0.0486,
+            "eps03": -0.1,
+            "ftype_index": 2,
+            "ftype_name": "CH1E",
+            "name": "C2",
+            "radius": 2.265,
+            "radius03": 1.76,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "C.3",
+            "x": -13.086,
+            "y": -0.67,
+            "z": 12.151
+        },
+        {
+            "ace_volume": 12.257,
+            "acp_type": -1,
+            "charge": 0.1688,
+            "element": "C",
+            "eps": -0.0486,
+            "eps03": -0.1,
+            "ftype_index": 2,
+            "ftype_name": "CH1E",
+            "name": "C3",
+            "radius": 2.265,
+            "radius03": 1.76,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "C.3",
+            "x": -12.934,
+            "y": 0.508,
+            "z": 13.136
+        },
+        {
+            "ace_volume": 12.257,
+            "acp_type": -1,
+            "charge": 0.1278,
+            "element": "C",
+            "eps": -0.0486,
+            "eps03": -0.1,
+            "ftype_index": 2,
+            "ftype_name": "CH1E",
+            "name": "C4",
+            "radius": 2.265,
+            "radius03": 1.76,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "C.3",
+            "x": -13.033,
+            "y": 1.864,
+            "z": 12.401
+        },
+        {
+            "ace_volume": 12.403,
+            "acp_type": -1,
+            "charge": 0.5091,
+            "element": "C",
+            "eps": -0.141,
+            "eps03": -0.141,
+            "ftype_index": 3,
+            "ftype_name": "C",
+            "name": "C5",
+            "radius": 1.87,
+            "radius03": 1.87,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "C.2",
+            "x": -12.152,
+            "y": 2.942,
+            "z": 13.042
+        },
+        {
+            "ace_volume": 14.375,
+            "acp_type": -1,
+            "charge": -0.5231,
+            "element": "O",
+            "eps": -0.1591,
+            "eps03": -0.2,
+            "ftype_index": 4,
+            "ftype_name": "O",
+            "hb_acceptor": true,
+            "name": "O1",
+            "radius": 1.55,
+            "radius03": 1.36,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "O.2",
+            "x": -11.136,
+            "y": 3.364,
+            "yeti_type": "carbonyl",
+            "z": 12.482
+        },
+        {
+            "ace_volume": 35.356,
+            "acp_type": -1,
+            "charge": 0.1988,
+            "element": "C",
+            "eps": -0.1142,
+            "eps03": -0.1,
+            "ftype_index": 5,
+            "ftype_name": "CH2E",
+            "name": "C6",
+            "radius": 2.235,
+            "radius03": 1.76,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "C.3",
+            "x": -12.598,
+            "y": 3.514,
+            "z": 14.382
+        },
+        {
+            "ace_volume": 21.427,
+            "acp_type": -1,
+            "charge": -0.5968,
+            "element": "O",
+            "eps": -0.1521,
+            "eps03": -0.2,
+            "ftype_index": 6,
+            "ftype_name": "OT",
+            "hb_acceptor": true,
+            "name": "O2",
+            "radius": 1.55,
+            "radius03": 1.48,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "O.3",
+            "x": -13.223,
+            "y": 2.573,
+            "yeti_type": "hydroxyl",
+            "z": 15.236
+        },
+        {
+            "ace_volume": 21.427,
+            "acp_type": -1,
+            "charge": -0.5898,
+            "element": "O",
+            "eps": -0.1521,
+            "eps03": -0.2,
+            "ftype_index": 6,
+            "ftype_name": "OT",
+            "hb_acceptor": true,
+            "name": "O3",
+            "radius": 1.55,
+            "radius03": 1.48,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "O.3",
+            "x": -14.401,
+            "y": 2.27,
+            "yeti_type": "hydroxyl",
+            "z": 12.314
+        },
+        {
+            "ace_volume": 21.427,
+            "acp_type": -1,
+            "charge": -0.5948,
+            "element": "O",
+            "eps": -0.1521,
+            "eps03": -0.2,
+            "ftype_index": 6,
+            "ftype_name": "OT",
+            "hb_acceptor": true,
+            "name": "O4",
+            "radius": 1.55,
+            "radius03": 1.48,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "O.3",
+            "x": -11.68,
+            "y": 0.379,
+            "yeti_type": "hydroxyl",
+            "z": 13.824
+        },
+        {
+            "ace_volume": 21.427,
+            "acp_type": -1,
+            "charge": -0.5988,
+            "element": "O",
+            "eps": -0.1521,
+            "eps03": -0.2,
+            "ftype_index": 6,
+            "ftype_name": "OT",
+            "hb_acceptor": true,
+            "name": "O5",
+            "radius": 1.55,
+            "radius03": 1.48,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "O.3",
+            "x": -11.899,
+            "y": -0.729,
+            "yeti_type": "hydroxyl",
+            "z": 11.349
+        },
+        {
+            "ace_volume": 0.44,
+            "acp_type": -1,
+            "charge": 0.42,
+            "element": "H",
+            "eps": -0.0498,
+            "eps03": -0.0498,
+            "ftype_index": 7,
+            "ftype_name": "HO",
+            "hb_donor": true,
+            "name": "H9",
+            "radius": 0.76,
+            "radius03": 0.76,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "H",
+            "x": -14.035,
+            "y": 2.246,
+            "z": 14.817
+        },
+        {
+            "ace_volume": 0.44,
+            "acp_type": -1,
+            "charge": 0.423,
+            "element": "H",
+            "eps": -0.0498,
+            "eps03": -0.0498,
+            "ftype_index": 7,
+            "ftype_name": "HO",
+            "hb_donor": true,
+            "name": "H10",
+            "radius": 0.76,
+            "radius03": 0.76,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "H",
+            "x": -14.759,
+            "y": 2.393,
+            "z": 13.207
+        },
+        {
+            "ace_volume": 0.44,
+            "acp_type": -1,
+            "charge": 0.426,
+            "element": "H",
+            "eps": -0.0498,
+            "eps03": -0.0498,
+            "ftype_index": 7,
+            "ftype_name": "HO",
+            "hb_donor": true,
+            "name": "H11",
+            "radius": 0.76,
+            "radius03": 0.76,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "H",
+            "x": -10.955,
+            "y": 0.403,
+            "z": 13.181
+        },
+        {
+            "ace_volume": 0.44,
+            "acp_type": -1,
+            "charge": 0.409,
+            "element": "H",
+            "eps": -0.0498,
+            "eps03": -0.0498,
+            "ftype_index": 7,
+            "ftype_name": "HO",
+            "hb_donor": true,
+            "name": "H12",
+            "radius": 0.76,
+            "radius03": 0.76,
+            "residue": "1",
+            "segment": "X",
+            "sybyl_type": "H",
+            "x": -11.13,
+            "y": -0.876,
+            "z": 11.921
+        }
+    ],
+    "bonds": [
+        {
+            "atom1": 1,
+            "atom2": 2,
+            "length": 1.535,
+            "sdf_type": 1,
+            "spring_constant": 303.1
+        },
+        {
+            "atom1": 2,
+            "atom2": 3,
+            "length": 1.535,
+            "sdf_type": 1,
+            "spring_constant": 303.1
+        },
+        {
+            "atom1": 2,
+            "atom2": 11,
+            "length": 1.426,
+            "sdf_type": 1,
+            "spring_constant": 314.1
+        },
+        {
+            "atom1": 3,
+            "atom2": 4,
+            "length": 1.535,
+            "sdf_type": 1,
+            "spring_constant": 303.1
+        },
+        {
+            "atom1": 3,
+            "atom2": 10,
+            "length": 1.426,
+            "sdf_type": 1,
+            "spring_constant": 314.1
+        },
+        {
+            "atom1": 4,
+            "atom2": 5,
+            "length": 1.508,
+            "sdf_type": 1,
+            "spring_constant": 328.3
+        },
+        {
+            "atom1": 4,
+            "atom2": 9,
+            "length": 1.426,
+            "sdf_type": 1,
+            "spring_constant": 314.1
+        },
+        {
+            "atom1": 5,
+            "atom2": 6,
+            "length": 1.214,
+            "sdf_type": 2,
+            "spring_constant": 648.0
+        },
+        {
+            "atom1": 5,
+            "atom2": 7,
+            "length": 1.508,
+            "sdf_type": 1,
+            "spring_constant": 328.3
+        },
+        {
+            "atom1": 7,
+            "atom2": 8,
+            "length": 1.426,
+            "sdf_type": 1,
+            "spring_constant": 314.1
+        },
+        {
+            "atom1": 8,
+            "atom2": 12,
+            "length": 0.974,
+            "sdf_type": 1,
+            "spring_constant": 369.6
+        },
+        {
+            "atom1": 9,
+            "atom2": 13,
+            "length": 0.974,
+            "sdf_type": 1,
+            "spring_constant": 369.6
+        },
+        {
+            "atom1": 10,
+            "atom2": 14,
+            "length": 0.974,
+            "sdf_type": 1,
+            "spring_constant": 369.6
+        },
+        {
+            "atom1": 11,
+            "atom2": 15,
+            "length": 0.974,
+            "sdf_type": 1,
+            "spring_constant": 369.6
+        }
+    ],
+    "impropers": [
+        {
+            "atom1": 4,
+            "atom2": 7,
+            "atom3": 5,
+            "atom4": 6,
+            "phi": 180.0,
+            "spring_constant": 1050.0
+        }
+    ],
+    "torsions": [
+        {
+            "atom1": 1,
+            "atom2": 2,
+            "atom3": 3,
+            "atom4": 4,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.18
+        },
+        {
+            "atom1": 1,
+            "atom2": 2,
+            "atom3": 3,
+            "atom4": 4,
+            "delta_constant": 180.0,
+            "minima": 2,
+            "spring_constant": 0.25
+        },
+        {
+            "atom1": 1,
+            "atom2": 2,
+            "atom3": 3,
+            "atom4": 4,
+            "delta_constant": 180.0,
+            "minima": 1,
+            "spring_constant": 0.2
+        },
+        {
+            "atom1": 11,
+            "atom2": 2,
+            "atom3": 3,
+            "atom4": 4,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.156
+        },
+        {
+            "atom1": 1,
+            "atom2": 2,
+            "atom3": 3,
+            "atom4": 10,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.156
+        },
+        {
+            "atom1": 11,
+            "atom2": 2,
+            "atom3": 3,
+            "atom4": 10,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.144
+        },
+        {
+            "atom1": 11,
+            "atom2": 2,
+            "atom3": 3,
+            "atom4": 10,
+            "delta_constant": 0.0,
+            "minima": 2,
+            "spring_constant": 1.175
+        },
+        {
+            "atom1": 1,
+            "atom2": 2,
+            "atom3": 11,
+            "atom4": 15,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.16
+        },
+        {
+            "atom1": 1,
+            "atom2": 2,
+            "atom3": 11,
+            "atom4": 15,
+            "delta_constant": 0.0,
+            "minima": 1,
+            "spring_constant": 0.25
+        },
+        {
+            "atom1": 3,
+            "atom2": 2,
+            "atom3": 11,
+            "atom4": 15,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.16
+        },
+        {
+            "atom1": 3,
+            "atom2": 2,
+            "atom3": 11,
+            "atom4": 15,
+            "delta_constant": 0.0,
+            "minima": 1,
+            "spring_constant": 0.25
+        },
+        {
+            "atom1": 2,
+            "atom2": 3,
+            "atom3": 4,
+            "atom4": 5,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.156
+        },
+        {
+            "atom1": 10,
+            "atom2": 3,
+            "atom3": 4,
+            "atom4": 5,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.156
+        },
+        {
+            "atom1": 2,
+            "atom2": 3,
+            "atom3": 4,
+            "atom4": 9,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.156
+        },
+        {
+            "atom1": 10,
+            "atom2": 3,
+            "atom3": 4,
+            "atom4": 9,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.144
+        },
+        {
+            "atom1": 10,
+            "atom2": 3,
+            "atom3": 4,
+            "atom4": 9,
+            "delta_constant": 0.0,
+            "minima": 2,
+            "spring_constant": 1.175
+        },
+        {
+            "atom1": 2,
+            "atom2": 3,
+            "atom3": 10,
+            "atom4": 14,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.16
+        },
+        {
+            "atom1": 2,
+            "atom2": 3,
+            "atom3": 10,
+            "atom4": 14,
+            "delta_constant": 0.0,
+            "minima": 1,
+            "spring_constant": 0.25
+        },
+        {
+            "atom1": 4,
+            "atom2": 3,
+            "atom3": 10,
+            "atom4": 14,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.16
+        },
+        {
+            "atom1": 4,
+            "atom2": 3,
+            "atom3": 10,
+            "atom4": 14,
+            "delta_constant": 0.0,
+            "minima": 1,
+            "spring_constant": 0.25
+        },
+        {
+            "atom1": 3,
+            "atom2": 4,
+            "atom3": 9,
+            "atom4": 13,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.16
+        },
+        {
+            "atom1": 3,
+            "atom2": 4,
+            "atom3": 9,
+            "atom4": 13,
+            "delta_constant": 0.0,
+            "minima": 1,
+            "spring_constant": 0.25
+        },
+        {
+            "atom1": 5,
+            "atom2": 4,
+            "atom3": 9,
+            "atom4": 13,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.167
+        },
+        {
+            "atom1": 5,
+            "atom2": 7,
+            "atom3": 8,
+            "atom4": 12,
+            "delta_constant": 0.0,
+            "minima": 3,
+            "spring_constant": 0.167
+        }
+    ],
+    "version": 1
+}

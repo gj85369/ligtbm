@@ -1,0 +1,16 @@
+django>=2.1.7
+psycopg2>=2.7.7
+configobj>=5.0.6
+path.py>=11.5.0
+biopython
+paramiko
+scp
+virtualenv
+gunicorn
+djangorestframework
+markdown
+django-filter
+celery
+sqlalchemy
+flower
+django-celery-results

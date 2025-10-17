@@ -1,0 +1,85 @@
+#!/usr/bin/env python
+import random
+import string
+
+
+CACHE_FILE = '.local_params'
+
+DEFAULTS = {
+    "REMOTE_HOST": 'scc2.bu.edu',
+    "REMOTE_USER": '#error#',
+    "REMOTE_PASS": '#error#',
+    "REMOTE_BIN": '#error#',
+    "REMOTE_STORAGE": '#error#',
+    "EMAIL_USER": '',
+    "EMAIL_PASS": '',
+    "EMAIL_HOST": 'smtp.gmail.com',
+    "LOCAL_PORT": '8080',
+    "SECRET_KEY": '',
+    "RABBITMQ_USER": 'rabbit',
+    "RABBITMQ_PASS": '',
+    "LOCAL_STORAGE": './storage',
+    "DATABASE_VOLUME": 'postgres_data'
+}
+
+
+def _autogen_pass():
+    length = random.randint(10, 15)
+    return ''.join([random.choice(string.ascii_letters + string.digits) for _ in range(length)])
+
+
+def get_params_file():
+    import json
+
+    with open(CACHE_FILE, "r") as f:
+        params = json.load(f)
+
+    for key, default in DEFAULTS.items():
+        if key == 'SECRET_KEY' and params.get(key, '') == '':
+            print('Generating the server secret key')
+            length = random.randint(50, 70)
+            params[key] = ''.join([random.choice(string.printable) for _ in range(length)])
+
+        if key == 'RABBITMQ_PASS' and params.get(key, '') == '':
+            print('Generating the password for Flower (tasks monitoring)')
+            params[key] = _autogen_pass()
+
+        if params.get(key, '') == '' and default == '#error#':
+            print('Please set the value for {key} in {CACHE_FILE}'.format(key=key, CACHE_FILE=CACHE_FILE))
+            exit(1)
+
+        if params.get(key, '') == '':
+            print('Setting the default value for {key} ({default}), set it manually in {CACHE_FILE} to change this behavior'.format(key=key, default=default, CACHE_FILE=CACHE_FILE))
+            params[key] = default
+
+    with open(CACHE_FILE, "w") as f:
+        json.dump(params, f, indent=4, sort_keys=True)
+        print('Dumping generated values back to {CACHE_FILE}\n'.format(CACHE_FILE=CACHE_FILE))
+
+    return params
+
+
+def main():
+    import os
+
+    try:
+        params = get_params_file()
+        print('Read parameters from cached parameter file {CACHE_FILE}'.format(CACHE_FILE=CACHE_FILE))
+    except OSError:
+        print('Copy .local_params_example to {CACHE_FILE} and set the appropriate fields'.format(CACHE_FILE=CACHE_FILE))
+        return 1
+    except Exception:
+        raise
+
+    os.environ.update(params)
+
+    from compose.cli.main import main as compose_main
+    sys.argv[:] = ['docker-compose'] + sys.argv[1:]
+    compose_main()
+    return 0
+
+
+if __name__ == '__main__':
+    import sys
+
+    sys.exit(main())

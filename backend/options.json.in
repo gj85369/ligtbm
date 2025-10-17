@@ -1,0 +1,11 @@
+{
+  "CONDA_ENV": "#CONDA_ENV#",
+  "BLASTP_BIN": "#BLASTP_BIN#",
+  "SBLU_BIN": "#CONDA_ENV#/bin/sblu",
+  "PSFGEN_BIN": "#CONDA_ENV#/bin/psfgen",
+  "ATLAS_BIN": "#CONDA_ENV#/opt/parameterize/parameterize",
+  "RMIN_BIN": "#LIGTBM#/rmin/build/rmin",
+  "CHARMM_PRM": "#LIGTBM#/data/charmm_param.prm",
+  "CHARMM_RTF": "#LIGTBM#/data/charmm_param.rtf",
+  "LIBMOL_PRM": "#LIGTBM#/data/atoms.0.0.6.prm.ms.3cap+0.5ace.Hr0rec"
+}

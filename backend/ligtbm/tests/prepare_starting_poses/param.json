@@ -1,0 +1,6 @@
+{
+    "lig_smiles": "CCCCNc1cc(cc(n1)OC)C(=O)N[C@@H](Cc2ccccc2)[C@H](C[C@@H](C)C(=O)NCCCC)O",
+    "rec_pdb_file": "5ygx.pdb",
+    "rec_chain": "A",
+    "num_confs": 100
+}

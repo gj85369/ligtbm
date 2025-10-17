@@ -1,0 +1,115 @@
+.my-fixed-width {
+    max-width: 500px;
+    margin: 0 auto;
+    float: none;
+}
+
+.my-padded {
+    padding: 15px;
+}
+
+.my-signin-form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-bottom: 25px;
+}
+
+.my-signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-bottom: 25px;
+}
+
+.my-generic-form {
+    max-width: 400px;
+    margin: auto;
+    padding: 25px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+
+/* error popups */
+.main-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.error-popup {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+._help-text {
+    color: #7e7e7e;
+    font-size: small;
+    margin-top: 0px;
+}
+
+._help-text + ul {
+    color: #7e7e7e;
+    font-size: small;
+    margin-top: 0px;
+}
+
+._password {
+    width: 30ch;
+}
+
+._email {
+    width: 40ch;
+}
+
+._generic_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.glow4 {
+    text-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px white, 0 0 40px white;
+}
+
+.glow3 {
+    text-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px white;
+}
+
+.glow2 {
+    text-shadow: 0 0 5px white, 0 0 10px white;
+}
+
+.glow1 {
+    text-shadow: 0 0 5px white;
+}
+
+.white-outline {
+    text-shadow:
+   -1px -1px 0 #ffffff,
+    1px -1px 0 #ffffff,
+    -1px 1px 0 #ffffff,
+     1px 1px 0 #ffffff;
+}
+
+.black-outline {
+    text-shadow:
+   -1px -1px 0 #000000,
+    1px -1px 0 #000000,
+    -1px 1px 0 #000000,
+     1px 1px 0 #000000;
+}
+
+
+
+
+

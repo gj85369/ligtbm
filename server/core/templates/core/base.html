@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+{% load static %}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{{ SERVER_NAME }}</title>
+
+    <meta name="viewport" http-equiv="content-type" content="text/html,charset=utf-8,width=device-width,initial-scale=1"/>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <link rel='stylesheet' type="text/css" href='{% static "core/css/style.css" %}'/>
+
+    <script src="{% static 'core/javascript/common.js' %}"></script>
+
+    {% block header_add %}{% endblock %}
+</head>
+
+{% autoescape on %}
+<body style="background: url({% static 'core/img/full_2048x2048_less_intense_2.png' %}) no-repeat right -500px top -150px;
+        background-size: 1300px 1300px;">
+
+    <div class="container-fluid" style="position: relative;
+            {% if request.resolver_match.url_name != 'login' %} background: rgba(255,255,255,0.8){% endif %};">
+        <nav class="navbar navbar-default" style="margin-bottom: 0">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button"
+                            class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#navbar"
+                            aria-expanded="false"
+                            aria-controls="navbar">
+
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href={% url "index" %}>{{ SERVER_NAME }}</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        {% if user.is_authenticated %}
+                            <li {% if request.resolver_match.url_name == "index" %}class='active'{% endif %}>
+                                <a href={% url "index" %}>Submit</a>
+                            </li>
+
+                            <li {% if request.resolver_match.url_name == "queue" %}class='active'{% endif %}>
+                                <a href={% url "queue" %}>Queue</a>
+                            </li>
+
+                            <li {% if request.resolver_match.url_name == "results" %}class='active'{% endif %}>
+                                <a href={% url "results" %}>Results</a>
+                            </li>
+                        {% endif %}
+
+                        <li {% if request.resolver_match.url_name == "publications" %}class='active'{% endif %}>
+                            <a href={% url "publications" %}>Papers</a>
+                        </li>
+                    
+                        <li {% if request.resolver_match.url_name == "contact" %}class='active'{% endif %}>
+                            <a href={% url "contact" %}>Contact</a>
+                        </li>
+
+                        {% if user.is_superuser %}
+                            <li {% if request.resolver_match.url_name == "admin" %}class='active'{% endif %}>
+                                <a href="/admin">Admin</a>
+                            </li>
+                            <li>
+                                <a href={% url 'flower' %}>Task monitor</a> {# TODO: not sure about the link name, check #}
+                            </li>
+                         {% endif %}
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                            <li>
+                                <a href=# style="cursor: auto">
+                                    <span class="glyphicon glyphicon-user"></span> Current user: <b>{{ user }}</b>
+                                </a>
+                            </li>
+                            {% if user.username != "anonym" %}
+                                <li {% if request.resolver_match.url_name == "settings" %}class='active'{% endif %}>
+                                    <a href={% url "settings" %}><span class="glyphicon glyphicon-cog"></span> Settings</a>
+                                </li>
+                            {% endif %}
+
+                            <li><a href={% url "logout" %}><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        {% else %}
+
+                            <li {% if request.resolver_match.url_name == "signup" %}class='active'{% endif %}>
+                            <a href={% url "signup" %}><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                            </li>
+
+                            <li {% if request.resolver_match.url_name == "login" %}class='active'{% endif %}>
+                                <a href={% url "login" %}><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        {% autoescape off %}
+            {% if errors %}
+                <div class="main-content error-popup alert alert-danger alert-dismissable fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+                    <br>
+                    {% for error in errors %}
+                        <br>
+                        <div>
+                            <p align="center"><strong>Error - </strong>{{ error }}</p>
+                        </div>
+                        <br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if messages %}
+                <div class="main-content error-popup alert alert-success alert-dismissable fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+                    <br>
+                    {% for message in messages %}
+                        <br>
+                        <div>
+                            <p align="center">{{ message }}</p>
+                        </div>
+                        <br>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endautoescape %}
+
+        {% block content %}{% endblock %}
+
+        <br><br>
+        <div class="well well-lg text-center small">
+            {{ SERVER_NAME }} should only be used for noncommercial purposes.
+            <br>
+            <a href="https://abcgroup.cluspro.org/">ABC Group (Stony Brook University)</a> and <a href="https://www.vajdalab.org/">Vajda Lab (Boston University)</a>.
+        </div>
+    </div>
+</body>
+{% endautoescape %}
+</html>

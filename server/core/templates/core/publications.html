@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="my-fixed-width text-center">
+        <h2>Papers</h2>
+        <p class="text-left"> When using the results of this server in a scientific publication, please cite the following papers:</p>
+        <ol class="text-left">
+                <li>Kotelnikov, Alekseenko, Liu, Ignatov, Padhorny, Brini, Lukin, Coutsias, Dill, Kozakov
+                    <i>"Sampling and refinement protocols for template-based macrocycle docking: 2018 D3R Grand Challenge 4,&rdquo;</i>
+                    Journal of Computer-Aided Molecular Design <b>34</b>(2), 179&ndash;189 (2020)
+                    <a href="https://doi.org/10.1007/s10822-019-00257-1">doi:10.1007/s10822-019-00257-1</a>
+                    (<a href={% static "core/files/LigTBM-Kotelnikov2020.pdf" %}>accepted pdf</a>)
+              </li>
+              <li>Alekseenko, Kotelnikov, Ignatov, Egbert, Kholodov, Vajda, Kozakov
+                  <i>"ClusPro LigTBM: Automated Template-Based Small Molecule Docking,&rdquo;</i>
+                  Journal of Molecular Biology <b>432</b>(11), 3404&ndash;3410 (2020)
+                  <a href="https://doi.org/10.1016/j.jmb.2019.12.011">doi:10.1016/j.jmb.2019.12.011</a>
+                  (<a href={% static "core/files/LigTBM-Alekseenko2020.pdf" %}>accepted pdf</a>)
+              </li>
+        </ol>
+    </div>
+{% endblock %}

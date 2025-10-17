@@ -1,0 +1,35 @@
+.job-progress {
+    border-radius: 5px;
+    height: 5px;
+    margin-top: 3px;
+}
+
+.job-progress-start {
+    background: #9bc1ff;
+    width: 5%;
+}
+
+.job-progress-prepare {
+    background: #ef9de3;
+    width: 10%;
+}
+
+.job-progress-running {
+    background: #007eef;
+    width: 50%;
+}
+
+.job-progress-complete {
+    background: #51ad4c;
+    width: 100%;
+}
+
+.job-progress-error {
+    background: lightcoral;
+    width: 100%;
+}
+
+.job-progress-no-template {
+    background: #fcd12a;
+    width: 100%;
+}

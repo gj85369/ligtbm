@@ -1,0 +1,78 @@
+{
+  "123.8X1.5V59_A": {
+    "HH_probability": 1.0,
+    "MCS_coverage": 0.5454545454545454,
+    "rec": "input_real/123.8X1.5V59_A/rec.pdb",
+    "lig": "input_real/123.8X1.5V59_A/lig.mol",
+    "ref_parts": [
+      {
+        "ref_rec": "input_real/123.8X1.5V59_A/ref_rec.pdb",
+        "ref_lig": "input_real/123.8X1.5V59_A/ref_lig.mol",
+        "mapping": [
+          {
+            "target_atom_id": 3,
+            "ref_atom_id": 12
+          },
+          {
+            "target_atom_id": 8,
+            "ref_atom_id": 13
+          },
+          {
+            "target_atom_id": 2,
+            "ref_atom_id": 10
+          },
+          {
+            "target_atom_id": 0,
+            "ref_atom_id": 6
+          },
+          {
+            "target_atom_id": 1,
+            "ref_atom_id": 8
+          },
+          {
+            "target_atom_id": 9,
+            "ref_atom_id": 11
+          }
+        ]
+      }
+    ]
+  },
+  "123.A5A.4XEO_B": {
+    "HH_probability": 1.0,
+    "MCS_coverage": 0.5454545454545454,
+    "rec": "input_real/123.A5A.4XEO_B/rec.pdb",
+    "lig": "input_real/123.A5A.4XEO_B/lig.mol",
+    "ref_parts": [
+      {
+        "ref_rec": "input_real/123.A5A.4XEO_B/ref_rec.pdb",
+        "ref_lig": "input_real/123.A5A.4XEO_B/ref_lig.mol",
+        "mapping": [
+          {
+            "target_atom_id": 2,
+            "ref_atom_id": 7
+          },
+          {
+            "target_atom_id": 9,
+            "ref_atom_id": 8
+          },
+          {
+            "target_atom_id": 8,
+            "ref_atom_id": 10
+          },
+          {
+            "target_atom_id": 1,
+            "ref_atom_id": 5
+          },
+          {
+            "target_atom_id": 3,
+            "ref_atom_id": 9
+          },
+          {
+            "target_atom_id": 4,
+            "ref_atom_id": 11
+          }
+        ]
+      }
+    ]
+  }
+}

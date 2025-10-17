@@ -1,0 +1,130 @@
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: buildfiles/Dockerfile.web
+    image: web:latest
+    command: gunicorn server.wsgi:application --bind 0.0.0.0:8000 --reload --timeout 30
+    volumes:
+      - ./server:/code
+      - /home/gdjones/ligtbm/ligtbm_storage/:/storage
+      - static_volume:/staticfiles
+      - media_volume:/mediafiles
+      - ./server/core/static/core:/staticfiles/core
+    environment:
+      - LOCAL_DB_HOST=db
+      - LOCAL_DB_NAME=server-template
+      - LOCAL_DB_USER=postgres
+      - LOCAL_ROOT=/code
+      - LOCAL_STORAGE=/storage
+      - REMOTE_HOST=scc2.bu.edu
+      - REMOTE_USER=al42and
+      - REMOTE_PASS=eMPpTl-H4yBL8VuYse28
+      - REMOTE_STORAGE=/projectnb/k3domics/ligtbm-prod/jobs2
+      - REMOTE_BIN=/projectnb/k3domics/ligtbm-prod/backend
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - SECRET_KEY=rn`&0S|ah&L-3h<,45[0|/rBon~R9~A}9$r[2lCo`)>j*rg@\\'>611Kr
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=RU8wmB07iBb46NG
+      - PRODUCTION=false
+    expose:
+      - 8000
+    depends_on:
+      - db
+    links:
+      - db:db
+
+  db:
+    image: postgres:10.5-alpine
+    volumes:
+      - /var/db/ligtbm/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=server-template
+
+  nginx:
+    build:
+      context: buildfiles
+      dockerfile: Dockerfile.nginx
+    volumes:
+      - static_volume:/staticfiles
+      - media_volume:/mediafiles
+      - ./server/core/static/core:/staticfiles/core
+    ports:
+      - 9081:80
+    depends_on:
+      - web
+      - flower
+
+  # runs on 5672 and 15672
+  rabbitmq:
+    image: rabbitmq:3.7-management-alpine
+    command: rabbitmq-server -h rabbit
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=sadovhw734of278r
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=RU8wmB07iBb46NG
+
+  celery:
+    image: web:latest
+    entrypoint: /bin/sh -c "mkdir -p /storage/logs && celery -A server worker --statedb=/storage/state.db -E -l warning --logfile=/dev/null"
+    volumes:
+      - ./server:/code
+      - /home/gdjones/ligtbm/ligtbm_storage/:/storage
+    environment:
+      - LOCAL_DB_HOST=db
+      - LOCAL_DB_NAME=server-template
+      - LOCAL_DB_USER=postgres
+      - LOCAL_ROOT=/code
+      - LOCAL_STORAGE=/storage
+      - REMOTE_HOST=scc2.bu.edu
+      - REMOTE_USER=al42and
+      - REMOTE_PASS=eMPpTl-H4yBL8VuYse28
+      - REMOTE_STORAGE=/projectnb/k3domics/ligtbm-prod/jobs2
+      - REMOTE_BIN=/projectnb/k3domics/ligtbm-prod/backend
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - SECRET_KEY=rn`&0S|ah&L-3h<,45[0|/rBon~R9~A}9$r[2lCo`)>j*rg@\\'>611Kr
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=RU8wmB07iBb46NG
+      - PRODUCTION=false
+    depends_on:
+      - web
+      - rabbitmq
+
+  flower:
+    image: web:latest
+    entrypoint: celery -A server flower --port=5555 --url_prefix=flower --persistent=True --db=/storage/flower.db
+    volumes:
+      - ./server:/code
+      - ./storage:/storage
+    environment:
+      - LOCAL_DB_HOST=db
+      - LOCAL_DB_NAME=server-template
+      - LOCAL_DB_USER=postgres
+      - LOCAL_ROOT=/code
+      - LOCAL_STORAGE=/storage
+      - REMOTE_HOST=scc2.bu.edu
+      - REMOTE_USER=al42and
+      - REMOTE_PASS=eMPpTl-H4yBL8VuYse28
+      - REMOTE_STORAGE=/projectnb/k3domics/ligtbm-prod/jobs2
+      - REMOTE_BIN=/projectnb/k3domics/ligtbm-prod/backend
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - SECRET_KEY=rn`&0S|ah&L-3h<,45[0|/rBon~R9~A}9$r[2lCo`)>j*rg@\\'>611Kr
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=RU8wmB07iBb46NG
+      - PRODUCTION=false
+    depends_on:
+      - rabbitmq
+      - celery
+
+volumes:
+  static_volume:
+  media_volume:
+  postgres_data:
+

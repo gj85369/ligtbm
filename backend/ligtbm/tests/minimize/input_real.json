@@ -1,0 +1,14 @@
+{
+  "0_123.8X1.5V59_A": {
+    "receptor_pdb": "input_real/0_123.8X1.5V59_A.rec.pdb",
+    "receptor_psf": "input_real/0_123.8X1.5V59_A.rec.psf",
+    "ligand_json": "input_real/0_123.8X1.5V59_A.lig.json",
+    "restraints_pdb": "input_real/0_123.8X1.5V59_A.restraints.pdb"
+  },
+  "0_123.A5A.4XEO_B": {
+    "receptor_pdb": "input_real/0_123.A5A.4XEO_B.rec.pdb",
+    "receptor_psf": "input_real/0_123.A5A.4XEO_B.rec.psf",
+    "ligand_json": "input_real/0_123.A5A.4XEO_B.lig.json",
+    "restraints_pdb": "input_real/0_123.A5A.4XEO_B.restraints.pdb"
+  }
+}
