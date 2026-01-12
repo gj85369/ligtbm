@@ -5,9 +5,30 @@ from . import env
 from .utils import upload_file
 from .runner.runner import run_job
 
+from django.core.validators import (
+    FileExtensionValidator,
+    MinLengthValidator,
+    RegexValidator,
+)
+from .modules.validators import validate_scc_api_url
+
 from celery import shared_task
 #from celery.utils.log import get_task_logger
-
+from django.db.models import (
+    CASCADE,
+    BooleanField,
+    CharField,
+    DateTimeField,
+    FileField,
+    FloatField,
+    ForeignKey,
+    IntegerChoices,
+    IntegerField,
+    Model,
+    TextChoices,
+    TextField,
+    UUIDField,
+)
 import json
 import logging
 import tempfile
@@ -44,7 +65,48 @@ def submit_job(self, job_id):
         Job.objects.get(job_id=job_id).local_error('Unknown error')
         raise
 
+class Settings(Model):                                                                                                                                                                        
+    ACCEPTING_JOBS = BooleanField(default=False, help_text="Accepting jobs if True.")                                                                                                         
+    BANNER_ON = BooleanField(default=False, help_text="Banner on if True.")                                                                                                                   
+    BANNER_MESSAGE = TextField(                                                                                                                                                               
+        blank=True,                                                                                                                                                                           
+        null=True,                                                                                                                                                                            
+        help_text="Enter a message to be displayed on the site-wide banner.",                                                                                                                 
+    )                                                                                                                                                                                         
+    AUTO_BANNER_MESSAGE = TextField(                                                                                                                                                          
+        default="Submissions are temporarily shut off due to connection errors with the Shared Computing Center. We are working to resolve this as quickly as possible.",                     
+        help_text="This is the text that will be automatically displayed when the connection with the Vajda-Dashboard is interrupted.",                                                       
+    )                                                                                                                                                                                         
+    DELETE_JOBS_AFTER = IntegerField(                                                                                                                                                         
+        default=30, help_text="Delete jobs that have not been modified in X days."                                                                                                            
+    )                                                                                                                                                                                         
+    TIMEOUT_JOBS_AFTER = IntegerField(                                                                                                                                                        
+        default=30, help_text="Timeout jobs that have not been modified in X hours."                                                                                                          
+    )                                                                                                                                                                                         
+    SCC_API_URL = CharField(                                                                                                                                                                  
+        max_length=50,                                                                                                                                                                        
+        validators=[validate_scc_api_url],                                                                                                                                                    
+        help_text="Enter the vajda-dashboard API URL",                                                                                                                                        
+    )                                                                                                                                                                                         
+    SCC_API_TOKEN = CharField(                                                                                                                                                                
+        primary_key=True, max_length=40, validators=[MinLengthValidator(40)]                                                                                                                  
+    )                                                                                                                                                                                         
+    modified = DateTimeField(auto_now=True)                                                                                                                                                   
 
+class SettingsLog(Model):                                                                                                                                                                     
+    settings = ForeignKey("Settings", on_delete=CASCADE)                                                                                                                                      
+    event = TextField()                                                                                                                                                                       
+    created = DateTimeField(auto_now_add=True)                                                                                                                                                
+                                                                                                                                                                                              
+    class Meta:                                                                                                                                                                               
+        get_latest_by = ["created"]                                                                                                                                                           
+        ordering = ["-created"]                                                                                                                                                               
+                                                                                                                                                                                              
+    def __str__(self):                                                                                                                                                                        
+        """ return string with the log pk and the associated event"""                                                                                                                         
+        return f"{self.pk}: {self.event}"    
+
+        
 class Job(models.Model):
     STATUS_CHOICES = (
         ('L.STR', 'Starting the job'),
