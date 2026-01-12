@@ -27,7 +27,7 @@ SECRET_KEY = CONFIG['local']['SECRET_KEY']
 DEBUG = not CONFIG['production']
 
 if CONFIG['production']:
-    ALLOWED_HOSTS = ['ligtbm.cluspro.org', 'mendelsun2.bu.edu']
+    ALLOWED_HOSTS = ['ligtbm.cluspro.org', 'mendelsun2.bu.edu', '127.0.0.1', 'lighost']
 else:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '10.241.49.136', 'mendelsun2.bu.edu']
 

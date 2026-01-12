@@ -9,8 +9,11 @@ services:
     command: gunicorn server.wsgi:application --bind 0.0.0.0:8000 --reload --timeout 30
     volumes:
       - ./server:/code
-      - ${LOCAL_STORAGE}:/storage
       - static_volume:/staticfiles
+      - type: bind
+        source: ${LOCAL_STORAGE}
+        target: /storage/
+
       - media_volume:/mediafiles
       - ./server/core/static/core:/staticfiles/core
     environment:
@@ -73,7 +76,9 @@ services:
     entrypoint: /bin/sh -c "mkdir -p /storage/logs && celery -A server worker --statedb=/storage/state.db -E -l warning --logfile=/dev/null"
     volumes:
       - ./server:/code
-      - ${LOCAL_STORAGE}:/storage
+      - type: bind
+        source: ${LOCAL_STORAGE}
+        target: /storage/
     environment:
       - LOCAL_DB_HOST=db
       - LOCAL_DB_NAME=server-template
@@ -101,7 +106,10 @@ services:
     entrypoint: celery -A server flower --port=5555 --url_prefix=flower --persistent=True --db=/storage/flower.db
     volumes:
       - ./server:/code
-      - ./storage:/storage
+      - type: bind
+        source: ${LOCAL_STORAGE}
+        target: /storage/
+
     environment:
       - LOCAL_DB_HOST=db
       - LOCAL_DB_NAME=server-template
